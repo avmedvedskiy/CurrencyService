@@ -33,6 +33,7 @@ namespace Currency.Editor
                 }}
                 {GetExtensionMethodCode()}
             }}";
+            enumCode = enumCode.Replace("CurrencyEnum", asset.codeGenEnumName);
 
             Directory.CreateDirectory(folder);
             File.WriteAllText(path, enumCode);
