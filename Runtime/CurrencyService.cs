@@ -7,6 +7,7 @@ namespace Currency
     {
         public event Action<Currency> OnCurrencyChanged;
         private readonly List<Currency> _currencies = new();
+        public IReadOnlyList<Currency> All => _currencies;
 
         public void SetCurrency(int id, int count)
         {
