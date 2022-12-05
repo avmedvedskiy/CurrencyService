@@ -6,7 +6,7 @@ namespace Currency
     [Serializable]
     public struct Currency
     {
-        private readonly int _id;
+        [SerializeField] private int _id;
 
         [SerializeField] private int _amount;
 
