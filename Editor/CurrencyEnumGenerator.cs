@@ -20,7 +20,6 @@ namespace Currency.Editor
             string path = $"{folder}/{asset.codeGenEnumName}.cs";
             
             var enums = asset.currencylist
-                .Where(value => value.id != 0)
                 .Select(value => $"{Replace(value.name)} = {value.id},");
 
             string enumCode =
