@@ -2,11 +2,6 @@
 
 namespace Currency
 {
-    public interface ICurrencyRefillObserver
-    {
-        void Initialize(CurrencyRefill currencyRefill, CurrencyService currencyService);
-    }
-
     public class CurrencyRefillObserver : MonoBehaviour, ICurrencyRefillObserver
     {
         private CurrencyRefill _currencyRefill;
@@ -32,6 +27,9 @@ namespace Currency
 
         public void OnApplicationPause(bool pauseStatus)
         {
+            if(_currencyRefill == null)
+                return;
+            
             if (pauseStatus)
             {
                 StopRefill();
