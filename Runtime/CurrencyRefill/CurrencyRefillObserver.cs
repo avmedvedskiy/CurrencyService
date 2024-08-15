@@ -16,7 +16,8 @@ namespace Currency
 
         private void OnDestroy()
         {
-            _currencyService.OnCurrencyChanged -= OnCurrencyChanged;
+            if (_currencyRefill != null)
+                _currencyService.OnCurrencyChanged -= OnCurrencyChanged;
         }
 
         private void OnCurrencyChanged(Currency currency)
@@ -27,9 +28,9 @@ namespace Currency
 
         public void OnApplicationPause(bool pauseStatus)
         {
-            if(_currencyRefill == null)
+            if (_currencyRefill == null)
                 return;
-            
+
             if (pauseStatus)
             {
                 StopRefill();
@@ -38,7 +39,6 @@ namespace Currency
             {
                 ProcessRefill();
             }
-
         }
 
         private void StopRefill()
