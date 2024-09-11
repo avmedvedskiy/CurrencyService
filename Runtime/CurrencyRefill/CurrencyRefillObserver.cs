@@ -22,8 +22,15 @@ namespace Currency
 
         private void OnCurrencyChanged(Currency currency)
         {
-            if (_currencyRefill.CurrencyId == currency.Id && _currencyRefill.NeedToRefill())
-                _currencyRefill.ProcessRefill();
+            if (_currencyRefill.CurrencyId == currency.Id)
+            {
+                if(_currencyRefill.NeedToRefill())
+                    _currencyRefill.ProcessRefill();
+                else
+                {
+                    _currencyRefill.ProcessRefill(default);
+                }
+            }
         }
 
         public void OnApplicationPause(bool pauseStatus)
