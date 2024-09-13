@@ -99,6 +99,8 @@ namespace Currency
         }
 
         public bool NeedToRefill() => _currencyService.GetCurrency(Config.CurrencyId) < Config.MaxCount;
+        
+        public int AmountToRefill() => Config.MaxCount - _currencyService.GetCurrency(Config.CurrencyId);
 
         private void RefillAmount()
         {
