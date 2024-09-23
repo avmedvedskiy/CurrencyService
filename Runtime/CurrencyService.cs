@@ -6,8 +6,9 @@ namespace Currency
     public class CurrencyService
     {
         public event Action<Currency> OnCurrencyChanged;
-        private readonly List<Currency> _currencies = new();
+        private List<Currency> _currencies = new();
 
+        public void SetInitialCurrency(List<Currency> currencies) => _currencies = currencies;
         public void SetCurrency(int id, int count)
         {
             int index = _currencies.FindIndex(x => x.Id == id);
@@ -48,7 +49,5 @@ namespace Currency
         {
             return _currencies.FindIndex(x => x.Id == id) != -1;
         }
-
-        public IReadOnlyList<Currency> GetAllCurrencies() => _currencies;
     }
 }
