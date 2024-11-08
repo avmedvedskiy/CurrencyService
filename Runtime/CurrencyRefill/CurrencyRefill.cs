@@ -96,6 +96,7 @@ namespace Currency
         {
             _tokenSource?.Cancel();
             _tokenSource?.Dispose();
+            _tokenSource = null;
         }
 
         public bool NeedToRefill() => _currencyService.GetCurrency(Config.CurrencyId) < Config.MaxCount;
